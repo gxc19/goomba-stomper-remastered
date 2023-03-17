@@ -1,0 +1,70 @@
+body{
+    margin: 0;
+    overflow: hidden;
+}
+
+h1{
+    margin: 0;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    background-color: orange;
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    background-color: rgb(103, 151, 151);
+}
+
+.game-container{
+    height: 600px;
+    width: 70%;
+    display: grid;
+    grid-template-rows: 33.3% 33.3% 33.3%;
+    background-color: grey;
+}
+
+.top, .bottom{
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    justify-items: center;
+    align-content: end;
+}
+
+.middle{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: end;
+}
+
+.mini-container{
+    display: flex;
+    justify-content: center;
+}
+
+.ground{
+    height: 200px;
+    width: 100vw;
+    background-color: brown;
+}
+
+#pipe, #goomba, #mario{
+    height: 130px;
+    width: auto;
+}
+
+#pipe{
+    position: relative;
+}
+
+#goomba, #mario{
+    position: absolute;
+}
