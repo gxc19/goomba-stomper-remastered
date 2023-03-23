@@ -5,12 +5,16 @@ body{
 
 h1{
     margin: 0;
+    padding: 0 20px 0 20px;
 }
 
-.header{
+#header{
+    height: 70px;
+    width: 100vw;
     display: flex;
     justify-content: center;
-    width: 100vw;
+    align-items: center;
+    font-size: 30px;
     background-color: orange;
 }
 
@@ -24,9 +28,18 @@ h1{
     background-color: rgb(103, 151, 151);
 }
 
+#timer{
+    height: 130px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    background-color: pink;
+}
+
 .game-container{
     height: 600px;
-    width: 70%;
+    width: 80%;
     display: grid;
     grid-template-rows: 33.3% 33.3% 33.3%;
     background-color: grey;
@@ -51,20 +64,37 @@ h1{
 }
 
 .ground{
-    height: 200px;
+    height: 22%;
     width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     background-color: brown;
 }
 
-#pipe, #goomba, #mario{
+#start{
+    height: 50px;
+    width: 150px;
+}
+
+#start:hover{
+    cursor: pointer;
+}
+
+.pipe, .goomba, .mario{
     height: 130px;
     width: auto;
 }
 
-#pipe{
+.pipe{
     position: relative;
+    z-index: 1;
 }
 
-#goomba, #mario{
+.goomba, .mario{
     position: absolute;
+}
+
+.up{
+    transform: translateY(-130px);
 }
