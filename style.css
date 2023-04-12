@@ -1,100 +1,104 @@
-body{
-    margin: 0;
-    overflow: hidden;
+body {
+  margin: 0;
+  overflow: hidden;
 }
 
-h1{
-    margin: 0;
-    padding: 0 20px 0 20px;
+h1 {
+  margin: 0;
+  padding: 0 20px 0 20px;
 }
 
-#header{
-    height: 70px;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    background-color: orange;
+#header {
+  height: 70px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  background-color: orange;
 }
 
-.container{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    align-items: center;
-    background-color: rgb(103, 151, 151);
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  background-color: rgb(103, 151, 151);
 }
 
-#timer{
-    height: 130px;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    font-size: 30px;
-    background-color: pink;
+#timer {
+  height: 130px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  background-color: pink;
 }
 
-.game-container{
-    height: 600px;
-    width: 80%;
-    display: grid;
-    grid-template-rows: 33.3% 33.3% 33.3%;
-    background-color: grey;
+.game-container {
+  height: 600px;
+  width: 80%;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  background-color: grey;
 }
 
-.top, .bottom{
-    display: grid;
-    grid-template-columns: 33.3% 33.3% 33.3%;
-    justify-items: center;
-    align-content: end;
+.top,
+.bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  align-content: end;
 }
 
-.middle{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: end;
+.middle {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: end;
 }
 
-.mini-container{
-    display: flex;
-    justify-content: center;
+.mini-container {
+  display: flex;
+  justify-content: center;
 }
 
-.ground{
-    height: 22%;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    background-color: brown;
+.ground {
+  height: 22%;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: brown;
 }
 
-#start{
-    height: 50px;
-    width: 150px;
+#start {
+  height: 50px;
+  width: 150px;
 }
 
-#start:hover{
-    cursor: pointer;
+#start:hover {
+  cursor: pointer;
 }
 
-.pipe, .goomba, .mario{
-    height: 130px;
-    width: auto;
+.pipe,
+.goomba,
+.mario {
+  height: 130px;
+  width: auto;
 }
 
-.pipe{
-    position: relative;
-    z-index: 1;
+.pipe {
+  position: relative;
+  z-index: 1;
 }
 
-.goomba, .mario{
-    position: absolute;
+.goomba,
+.mario {
+  position: absolute;
 }
 
-.up{
-    transform: translateY(-130px);
+.up {
+  transform: translateY(-130px);
 }

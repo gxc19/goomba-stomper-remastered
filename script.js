@@ -1,6 +1,7 @@
 const start = document.getElementById("start");
 const goomba = document.querySelectorAll(".goomba");
 const mario = document.querySelectorAll(".mario");
+let previous;
 
 start.addEventListener("click", () => {
   start.style.visibility = "hidden";
@@ -8,25 +9,36 @@ start.addEventListener("click", () => {
 });
 
 const gameStart = () => {
-  setInterval(() => {
-    let current;
-    let goombaMario = Math.floor(Math.random() * 3) + 1;
-    let rnd = Math.floor(Math.random() * goomba.length);
-    current = rnd
-    // if(current === rnd){
-    //     console.log("this is the same number")
-    // }
-    if (goombaMario === 1) {
+  // randomly picks 0 or 1
+  const goombaMario = () => {
+    return Math.floor(Math.random() * 2);
+  };
+
+  // randomly picks which to pop up and prevents previous number from being picked again
+  const randomGoombaMario = () => {
+    let rnd = Math.floor(Math.random() * 3);
+    if (rnd === previous) {
+      return randomGoombaMario();
+    }
+    previous = rnd;
+    return previous;
+  };
+
+  // Goomba pops up if true, whilst Mario pops up if false
+  const popUp = () => {
+    let rnd = randomGoombaMario();
+    if (goombaMario()) {
       goomba[rnd].classList.add("up");
       setTimeout(() => {
-        goomba[rnd].classList.remove("up")
+        goomba[rnd].classList.remove("up");
       }, 1000);
-    } else if (goombaMario === 2) {
+    } else {
       mario[rnd].classList.add("up");
       setTimeout(() => {
-        mario[rnd].classList.remove("up")
-      }, 1000)
+        mario[rnd].classList.remove("up");
+      }, 1000);
     }
-    console.log(rnd);
-  }, 1200);
+  };
+
+  setInterval(popUp, 1200);
 };
