@@ -37,6 +37,10 @@ h1 {
   background-color: pink;
 }
 
+#time {
+  visibility: hidden;
+}
+
 .game-container {
   height: 600px;
   width: 80%;
