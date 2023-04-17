@@ -3,7 +3,7 @@ const timer = document.getElementById("time");
 const goomba = document.querySelectorAll(".goomba");
 const mario = document.querySelectorAll(".mario");
 let previous;
-let gameStatus = false;
+let gameInfo = false;
 let gameOver = false;
 
 // pressing will start the game
@@ -11,23 +11,25 @@ start.addEventListener("click", () => {
   start.style.visibility = "hidden";
   time();
   gameStart();
+  gameOver = false;
 });
 
+// count down timer, stops once it reaches 0
 const time = () => {
-  let num = 10;
-  gameStatus = true;
-  if (gameStatus) {
+  let num = 5;
+  gameInfo = true;
+  if (gameInfo) {
     timer.style.visibility = "initial";
   }
   let countDown = setInterval(() => {
     num--;
+    timer.innerHTML = `${num}`;
     if (num === 0) {
       clearInterval(countDown);
       start.innerHTML = "Try Again?";
       start.style.visibility = "initial";
       gameOver = true;
     }
-    timer.innerHTML = `${num}`;
   }, 1000);
 };
 
@@ -61,7 +63,10 @@ const gameStart = () => {
         mario[rnd].classList.remove("up");
       }, 1000);
     }
+    if (gameOver) {
+      clearInterval(test);
+    }
   };
 
-  setInterval(popUp, 1200);
+  let test = setInterval(popUp, 1000);
 };
