@@ -3,6 +3,7 @@ const timer = document.getElementById("time");
 const goomba = document.querySelectorAll(".goomba");
 const mario = document.querySelectorAll(".mario");
 let previous;
+let num = 11;
 let gameInfo = false;
 let gameOver = false;
 
@@ -12,11 +13,11 @@ start.addEventListener("click", () => {
   time();
   gameStart();
   gameOver = false;
+  num = 11;
 });
 
 // count down timer, stops once it reaches 0
 const time = () => {
-  let num = 5;
   gameInfo = true;
   if (gameInfo) {
     timer.style.visibility = "initial";
@@ -39,6 +40,13 @@ const gameStart = () => {
     return Math.floor(Math.random() * 2);
   };
 
+  // randomly picks from an array
+  const randomTime = () => {
+    let rndTimes = [200, 500, 900];
+    let rnd = Math.floor(Math.random() * rndTimes.length);
+    return rndTimes.splice(rnd, 1);
+  };
+
   // randomly picks which to pop up and prevents previous number from being picked again
   const randomGoombaMario = () => {
     let rnd = Math.floor(Math.random() * goomba.length);
@@ -51,22 +59,23 @@ const gameStart = () => {
 
   // Goomba pops up if true, whilst Mario pops up if false
   const popUp = () => {
+    let test = randomTime();
     let rnd = randomGoombaMario();
     if (goombaMario()) {
       goomba[rnd].classList.add("up");
       setTimeout(() => {
         goomba[rnd].classList.remove("up");
-      }, 1000);
+      }, test);
     } else {
       mario[rnd].classList.add("up");
       setTimeout(() => {
         mario[rnd].classList.remove("up");
-      }, 1000);
+      }, test);
     }
     if (gameOver) {
-      clearInterval(test);
+      clearInterval(peep);
     }
   };
 
-  let test = setInterval(popUp, 1000);
+  let peep = setInterval(popUp, 1000);
 };
