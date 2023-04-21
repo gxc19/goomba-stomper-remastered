@@ -25,8 +25,9 @@ const time = () => {
   let countDown = setInterval(() => {
     num--;
     timer.innerHTML = `${num}`;
-    if (num === 0) {
+    if (num <= 0) {
       clearInterval(countDown);
+      timer.innerHTML = "0";
       start.innerHTML = "Try Again?";
       start.style.visibility = "initial";
       gameOver = true;
@@ -43,7 +44,7 @@ const gameStart = () => {
 
   // randomly picks from an array of numbers
   const randomTime = () => {
-    let rndTimes = [400, 800, 1100];
+    let rndTimes = [4000, 8000, 1100];
     let rnd = Math.floor(Math.random() * rndTimes.length);
     return rndTimes.splice(rnd, 1);
   };
@@ -86,9 +87,9 @@ goomba.forEach((current) => {
   current.addEventListener("click", () => {
     current.dataset.dead = "true";
     if (current.dataset.dead) {
+      num += 5;
       current.src = "./images/deadGoomba.png";
       current.classList.remove("up");
-      console.log("pressed");
     }
     setTimeout(() => {
       current.src = "./images/goomba.png";
@@ -101,9 +102,9 @@ mario.forEach((current) => {
   current.addEventListener("click", () => {
     current.dataset.dead = "true";
     if (current.dataset.dead) {
+      num -= 5;
       current.src = "images/deadMario.png";
       current.classList.remove("up");
-      console.log("pressed");
     }
     setTimeout(() => {
       current.src = "images/mario.png";
