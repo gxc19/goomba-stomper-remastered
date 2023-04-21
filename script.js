@@ -3,7 +3,7 @@ const timer = document.getElementById("time");
 const goomba = document.querySelectorAll(".goomba");
 const mario = document.querySelectorAll(".mario");
 let previous;
-let num = 11;
+let num = 16;
 let gameInfo = false;
 let gameOver = false;
 
@@ -13,7 +13,7 @@ start.addEventListener("click", () => {
   time();
   gameStart();
   gameOver = false;
-  num = 11;
+  num = 16;
 });
 
 // count down timer, stops once it reaches 0
@@ -34,15 +34,16 @@ const time = () => {
   }, 1000);
 };
 
+// the meat and potatoes of the functions
 const gameStart = () => {
   // randomly picks 0 or 1
   const goombaMario = () => {
     return Math.floor(Math.random() * 2);
   };
 
-  // randomly picks from an array
+  // randomly picks from an array of numbers
   const randomTime = () => {
-    let rndTimes = [200, 500, 900];
+    let rndTimes = [400, 800, 1100];
     let rnd = Math.floor(Math.random() * rndTimes.length);
     return rndTimes.splice(rnd, 1);
   };
@@ -59,18 +60,18 @@ const gameStart = () => {
 
   // Goomba pops up if true, whilst Mario pops up if false
   const popUp = () => {
-    let test = randomTime();
+    let rndTime = randomTime();
     let rnd = randomGoombaMario();
     if (goombaMario()) {
       goomba[rnd].classList.add("up");
       setTimeout(() => {
         goomba[rnd].classList.remove("up");
-      }, test);
+      }, rndTime);
     } else {
       mario[rnd].classList.add("up");
       setTimeout(() => {
         mario[rnd].classList.remove("up");
-      }, test);
+      }, rndTime);
     }
     if (gameOver) {
       clearInterval(peep);
@@ -79,3 +80,33 @@ const gameStart = () => {
 
   let peep = setInterval(popUp, 1000);
 };
+
+// for each Goomba, the one clicked on will change to a dead verison
+goomba.forEach((current) => {
+  current.addEventListener("click", () => {
+    current.dataset.dead = "true";
+    if (current.dataset.dead) {
+      current.src = "./images/deadGoomba.png";
+      current.classList.remove("up");
+      console.log("pressed");
+    }
+    setTimeout(() => {
+      current.src = "./images/goomba.png";
+    }, 500);
+  });
+});
+
+// for each Mario, the one clicked on will change to a dead version
+mario.forEach((current) => {
+  current.addEventListener("click", () => {
+    current.dataset.dead = "true";
+    if (current.dataset.dead) {
+      current.src = "images/deadMario.png";
+      current.classList.remove("up");
+      console.log("pressed");
+    }
+    setTimeout(() => {
+      current.src = "images/mario.png";
+    }, 500);
+  });
+});
